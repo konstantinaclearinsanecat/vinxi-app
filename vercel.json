@@ -1,11 +1,16 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".vinxi/build",
   "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".output/public",
+  "functions": {
+    "app/entry-server.tsx": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/api/ssr"
     }
   ]
 }
