@@ -1,12 +1,6 @@
 import { createApp } from 'vinxi';
-import { config } from 'vinxi/plugins/config';
 
 export default createApp({
-  server: {
-    experimental: {
-      asyncContext: true,
-    },
-  },
   routers: [
     {
       name: 'public',
@@ -16,30 +10,10 @@ export default createApp({
     },
     {
       name: 'client',
-      type: 'client',
+      type: 'spa',
       handler: './app/entry-client.tsx',
       target: 'browser',
-      plugins: () => [
-        config('react', {
-          babel: {
-            plugins: [
-              [
-                '@babel/plugin-transform-react-jsx',
-                {
-                  runtime: 'automatic',
-                },
-              ],
-            ],
-          },
-        }),
-      ],
-      base: '/_build',
-    },
-    {
-      name: 'ssr',
-      type: 'http',
-      handler: './app/entry-server.tsx',
-      target: 'server',
+      base: '/',
     },
   ],
 });
