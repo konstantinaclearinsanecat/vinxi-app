@@ -1,4 +1,7 @@
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { App } from './App';
 
-hydrateRoot(document.getElementById('root')!, <App />);
+const root = document.getElementById('root');
+if (root) {
+  createRoot(root).render(<App />);
+}
